@@ -21,6 +21,9 @@ return [
             // The folder (if any) where you'd like your stashed assets to reside.
             'remote_directory' => env('AIRDROP_REMOTE_DIR', 'airdrop'),
 
+            // Remove all files from remote directory before uploading new file
+            'clean_remote_directory' => env('AIRDROP_CLEAN_REMOTE_DIR', false),
+
             // A writeable directory on the machine that builds the assets.
             // Used to build up the ZIP file before stashing it.
             'local_tmp_directory' => env('AIRDROP_LOCAL_TMP_DIR', storage_path('framework')),

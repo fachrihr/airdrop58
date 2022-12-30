@@ -39,6 +39,8 @@ class FilesystemDriver extends BaseDriver
 
         $this->makeZip($zipPath);
 
+        $this->cleanRemoteDirectory();
+
         $this->uploadToRemoteStorage($zipPath);
     }
 
@@ -197,6 +199,20 @@ class FilesystemDriver extends BaseDriver
 
         // Clean up after ourselves once it's uploaded.
         File::delete($zipPath);
+    }
+
+    protected function cleanRemoteDirectory()
+    {
+        $shouldClean = Arr::get($this->config, 'clean_remote_directory');
+
+        if (!$shouldClean) {
+            return;
+        }
+
+        $dir = Arr::get($this->config, 'remote_directory');
+        $files = $this->disk()->allFiles($dir);
+        
+        $this->disk()->delete($files);
     }
 
     /**
