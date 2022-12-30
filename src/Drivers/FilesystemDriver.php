@@ -7,7 +7,9 @@ namespace Hammerstone\Airdrop\Drivers;
 
 use Exception;
 use Hammerstone\Airdrop\FileSelection;
+use Illuminate\Http\File as FileHttp;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -182,6 +184,10 @@ class FilesystemDriver extends BaseDriver
     protected function uploadToRemoteStorage($zipPath)
     {
         $this->output('Uploading to remote disk at ' . $this->remoteStashPath() . $this->stashedPackageFilename());
+
+        if (intval(substr(App::version(), 0, 1)) == 5) {
+            $zipPath = new FileHttp($zipPath);
+        }
 
         $this->disk()->putFileAs(
             $this->remoteStashPath(),

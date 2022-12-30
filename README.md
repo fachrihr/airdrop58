@@ -2,6 +2,8 @@
 
 [![Tests](https://github.com/hammerstonehq/airdrop/actions/workflows/tests.yml/badge.svg)](https://github.com/hammerstonehq/airdrop/actions/workflows/tests.yml) [![Latest Stable Version](https://poser.pugx.org/hammerstone/airdrop/v)](//packagist.org/packages/hammerstone/airdrop) [![Total Downloads](https://poser.pugx.org/hammerstone/airdrop/downloads)](//packagist.org/packages/hammerstone/airdrop) [![License](https://poser.pugx.org/hammerstone/airdrop/license)](//packagist.org/packages/hammerstone/airdrop)
 
+A fork hammerstonedev/airdrop to support Laravel 5.8.
+
 > Read the full docs at [hammerstone.dev/airdrop/docs](https://hammerstone.dev/airdrop/docs/main/overview).
 
 Hammerstone Airdrop for Laravel is a package that speeds up your deploys by skipping your asset build step whenever possible.
@@ -15,7 +17,7 @@ After Airdrop has calculated a hash for these inputs, it will check to see if it
 
 You can install the package via Composer
 ```console
-composer require hammerstone/airdrop
+composer require fachrihr/airdrop58
 ```
 
 Once the package is installed, you may optionally publish the config file by running 
